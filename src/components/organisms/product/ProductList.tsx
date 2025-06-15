@@ -1,7 +1,8 @@
-import { Pagination } from "@/components/molecules/Pagination";
+import { Pagination } from "@/components/organisms/Pagination";
 import { ProductCard } from "@/components/molecules/ProductCard";
 import { useProductStore } from "@/store";
 import { ShoppingCart } from "lucide-react";
+import { Loading } from "@/components/atoms/Loading";
 
 export function ProductList() {
   const { products, total, page, setPage, limit, loading } = useProductStore()
@@ -10,9 +11,7 @@ export function ProductList() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
-      </div>
+      <Loading />
     );
   }
   return (
@@ -23,7 +22,7 @@ export function ProductList() {
       </div>
     ) : (
       <>
-        <div className="grid md:grid-cols-[repeat(auto-fit,minmax(220px,1fr))] grid-cols-[repeat(auto-fit,minmax(170px,1fr))] gap-1 sm:gap-3">
+        <div className="grid md:grid-cols-[repeat(auto-fill,minmax(220px,1fr))] grid-cols-[repeat(auto-fill,minmax(170px,1fr))] gap-1 sm:gap-3">
           {products.map((product) => (
             <ProductCard key={product.id} {...product} />
           ))}
@@ -31,8 +30,10 @@ export function ProductList() {
 
         {totalPages > 1 && (
           <Pagination
+            total={total}
             currentPage={page}
             totalPages={totalPages}
+            limit={limit}
             paginate={setPage}
           />
         )}

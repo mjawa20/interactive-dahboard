@@ -1,10 +1,10 @@
+
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import Sidebar from '@/components/organisms/Sidebar';
-import Navbar from '@/components/organisms/Navbar';
+import PageLayout from '@/components/templates/PageLayout';
 
-const inter = Inter({ subsets: ['latin'] });
+// const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Interactive Dashboard',
@@ -15,20 +15,14 @@ type RootLayoutProps = {
   children: React.ReactNode;
 };
 
+
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-gray-50 flex h-screen overflow-hidden`}>
-        <Sidebar />
-        <main className="flex flex-col w-full">
-          <Navbar />
-          <div className='overflow-auto'>
-            <div className='mx-auto max-w-6xl p-3'>
-
-              {children}
-            </div>
-          </div>
-        </main>
+      <body className="bg-gray-50">
+        <PageLayout>
+          {children}
+        </PageLayout>
       </body>
     </html>
   );

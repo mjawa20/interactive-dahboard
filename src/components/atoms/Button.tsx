@@ -12,11 +12,11 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const buttonVariants = {
-  primary: 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500',
+  primary: 'bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500',
   secondary: 'bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500',
-  outline: 'border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:ring-blue-500',
-  ghost: 'bg-transparent hover:bg-gray-100 text-gray-700 focus:ring-blue-500',
-  link: 'bg-transparent text-blue-600 hover:text-blue-800 hover:underline p-0 h-auto'
+  outline: 'border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:ring-primary-500',
+  ghost: 'bg-transparent hover:bg-gray-100 text-gray-700 focus:ring-primary-500',
+  link: 'bg-transparent text-primary-600 hover:text-primary-800 hover:underline p-0 h-auto'
 };
 
 const buttonSizes = {
@@ -52,7 +52,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
       {...props}
     >
       {isLoading && (
-        <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-blue-500"></div>
+        <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-primary-500"></div>
       )}
       {children}
     </button>

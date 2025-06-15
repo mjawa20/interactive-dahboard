@@ -2,15 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { 
-  ShoppingCart, 
-  Utensils, 
-  FileText, 
+import {
+  ShoppingCart,
+  Utensils,
   Package,
   DollarSign,
-  Users,
-  TrendingUp,
-  Activity
 } from 'lucide-react';
 import { Bar, Line, Pie } from 'react-chartjs-2';
 import {
@@ -25,6 +21,8 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import { SummaryCard } from '@/components/molecules/SummaryCard';
+import { HeaderPage } from '@/components/molecules/HeaderPage';
 
 // Register ChartJS components
 ChartJS.register(
@@ -93,7 +91,7 @@ export default function Home() {
         const categories = Array.from(
           new Set(productsRes.data.products.map((p: any) => p.category as string))
         );
-        
+
         const categoryCounts = categories.map((category) => {
           return productsRes.data.products.filter(
             (p: any) => p.category === category
@@ -159,7 +157,7 @@ export default function Home() {
         // Sample revenue data (in a real app, you'd fetch this from your backend)
         const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
         const revenue = months.map(() => Math.floor(Math.random() * 10000) + 5000);
-        
+
         setRevenueData({
           labels: months,
           datasets: [
@@ -195,32 +193,31 @@ export default function Home() {
 
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-gray-800">Dashboard Overview</h1>
-      
-      {/* Summary Cards */}
+    <div className="space-y-3">
+      <HeaderPage title="Dashboard" description="Overview of your store" />
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <SummaryCard 
-          title="Total Products" 
-          value={summary.totalProducts} 
+        <SummaryCard
+          title="Total Products"
+          value={summary.totalProducts}
           icon={<Package className="w-6 h-6" />}
           color="bg-blue-500"
         />
-        <SummaryCard 
-          title="Total Recipes" 
-          value={summary.totalRecipes} 
+        <SummaryCard
+          title="Total Recipes"
+          value={summary.totalRecipes}
           icon={<Utensils className="w-6 h-6" />}
           color="bg-green-500"
         />
-        <SummaryCard 
-          title="Total Carts" 
-          value={summary.totalCarts} 
+        <SummaryCard
+          title="Total Carts"
+          value={summary.totalCarts}
           icon={<ShoppingCart className="w-6 h-6" />}
           color="bg-yellow-500"
         />
-        <SummaryCard 
-          title="Total Revenue" 
-          value={`$${summary.totalRevenue.toLocaleString()}`} 
+        <SummaryCard
+          title="Total Revenue"
+          value={`$${summary.totalRevenue.toLocaleString()}`}
           icon={<DollarSign className="w-6 h-6" />}
           color="bg-purple-500"
         />
@@ -252,23 +249,4 @@ export default function Home() {
   );
 }
 
-type SummaryCardProps = {
-  title: string;
-  value: number | string;
-  icon: React.ReactNode;
-  color: string;
-};
 
-function SummaryCard({ title, value, icon, color }: SummaryCardProps) {
-  return (
-    <div className="bg-white rounded-lg shadow p-6 flex items-center">
-      <div className={`${color} p-3 rounded-full text-white mr-4`}>
-        {icon}
-      </div>
-      <div>
-        <p className="text-gray-500 text-sm">{title}</p>
-        <p className="text-2xl font-bold">{value}</p>
-      </div>
-    </div>
-  );
-}

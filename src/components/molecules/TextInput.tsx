@@ -1,13 +1,13 @@
 import { Input, InputProps } from '@/components/atoms/Input';
 import { cn } from '@/lib/utils';
 
-interface TexInput extends InputProps {
+interface TextInputProps extends InputProps {
   label?: string;
   error?: string;
   fullWidth?: boolean;
 }
 
-export function TexInput({ label, error, fullWidth, ...props }: TexInput) {
+export function TextInput({ label, error, fullWidth, ...props }: TextInputProps) {
   return (
     <div className={cn('flex flex-col gap-1', fullWidth ? 'w-full' : 'w-fit')}>
       {label && <label className="text-sm font-medium text-gray-700">{label}</label>}

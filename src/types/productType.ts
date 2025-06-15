@@ -46,3 +46,36 @@ export interface ProductResponse {
   skip: number;
   limit: number;
 }
+
+export interface Category {
+  name: string;
+  slug: string;
+  url: string;
+}
+
+
+export interface ProductStore {
+  products: Product[];
+  loading: boolean;
+  total: number;
+
+  page: number;
+  limit: number;
+  search: string;
+  sortBy: string;
+  sortOrder: 'asc' | 'desc';
+  selectedCategory: string;
+  loadingCategory: boolean;
+  sort: string;
+  type: 'all' | 'category' | 'search';
+
+  setSearch: (q: string) => void;
+  setPage: (p: number) => void;
+  setSort: (meta: string) => void;
+  getParams: () => Record<string, string>;
+  setSelectedCategory: (category: string) => void;
+  getCategories: () => void;
+  categories: Category[];
+
+  fetchProducts: () => Promise<void>;
+}

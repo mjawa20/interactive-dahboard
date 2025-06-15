@@ -23,7 +23,7 @@ export function ProductCard({
   return (
     <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 border border-gray-100">
       <div className="relative">
-        <div className="aspect-square relative">
+        <div className="aspect-square relative bg-slate-50">
           <Image
             src={thumbnail}
             alt={title}
@@ -32,8 +32,8 @@ export function ProductCard({
           />
         </div>
       </div>
-      <div className="p-4 space-y-1">
-        <h3 className="text-sm sm:text-base font-medium text-gray-900 line-clamp-2 h-12">{title}</h3>
+      <div className="p-2 sm:p-4 space-y-1 shadow border border-slate-100">
+        <h3 className="text-sm sm:text-base font-medium text-gray-900 line-clamp-2">{title}</h3>
         <div className="flex items-center">
           <div className="flex text-yellow-400">
             {[...Array(5)].map((_, i) => (

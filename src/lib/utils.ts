@@ -25,3 +25,20 @@ export function getInitials(name: string) {
     .toUpperCase()
     .slice(0, 2);
 }
+
+export function formatCurrency(value: number) {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(value);
+}
+
+export function buildParams(params: Record<string, string>) {
+    const urlParams = new URLSearchParams();
+    Object.entries(params).forEach(([key, value]) => {
+        urlParams.append(key, value);
+    });
+    return urlParams.toString();
+}
