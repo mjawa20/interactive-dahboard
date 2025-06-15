@@ -8,7 +8,7 @@ import { SummaryCard } from '@/components/molecules/SummaryCard';
 import { HeaderPage } from '@/components/molecules/HeaderPage';
 import { useDashboardStore } from '@/store/dashboardStore';
 import { ChartSkeleton } from '@/components/atoms/ChartSkeleton';
-import { DollarSign, Newspaper, Package, ShoppingCart, Utensils } from 'lucide-react';
+import { Newspaper, Package, ShoppingCart, Utensils } from 'lucide-react';
 
 // Register ChartJS components
 ChartJS.register(

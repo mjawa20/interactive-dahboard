@@ -9,11 +9,6 @@ import { HeaderPage } from '@/components/molecules/HeaderPage';
 
 export default function ProductsPage() {
   const {
-    page,
-    limit,
-    search,
-    sortBy,
-    sortOrder,
     fetchProducts,
   } = useProductStore();
 
