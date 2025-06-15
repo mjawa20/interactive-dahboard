@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📊 Interactive Dashboard - Frontend Technical Test
 
-## Getting Started
+## 📋 Overview
+Sebuah dashboard interaktif yang menampilkan data dari [DummyJSON API](https://dummyjson.com) dengan antarmuka yang **modern** dan **responsif**.  
+Dibangun menggunakan **Next.js**, **TypeScript**, dan **Tailwind CSS**.
 
-First, run the development server:
+---
 
+## 🚀 Cara Menjalankan Project
+
+### 🔧 Prasyarat
+- Node.js v18 atau lebih baru
+
+### 📦 Install dependencies
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+# atau
+yarn
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### ▶️ Jalankan development server
+```bash
+npm run dev
+# atau
+yarn dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Akses proyek di browser melalui: [http://localhost:3000](http://localhost:3000)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🖥️ Halaman yang Tersedia
 
-To learn more about Next.js, take a look at the following resources:
+### 1. Dashboard Utama
+- Ringkasan statistik (Products, Recipes, Carts, Posts)
+- Visualisasi data interaktif
+- Aktivitas terbaru
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 2. Manajemen Produk
+- Daftar produk dengan pencarian
+- Filter dan pengurutan
+- Paginasi
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 3. Resep
+- Filter berdasarkan tag dan tipe makanan
+- Tampilan card yang informatif
+- Pencarian dan pengurutan
 
-## Deploy on Vercel
+### 4. Keranjang / Transaksi
+- Daftar transaksi
+- Detail keranjang
+- Ringkasan total belanja
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🛠️ Teknologi yang Digunakan
+
+### ⚙️ Frontend
+- **Next.js 15** – React Framework
+- **TypeScript** – Static Typing
+- **Tailwind CSS** – Utility-first CSS Framework
+- **Chart.js** – Visualisasi Data
+- **Zustand** – State Management
+- **Axios** – HTTP Client
+- **Lucide React** – Ikon
+
+### 🧪 Pengembangan
+- **ESLint & Prettier** – Menjaga kualitas kode
+
+---
+
+## 📡 API Endpoint
+Menggunakan [DummyJSON API](https://dummyjson.com):
+
+- `GET /products` – Data produk  
+- `GET /carts` – Data keranjang/transaksi  
+- `GET /recipes` – Data resep  
+- `GET /posts` – Data postingan  
+
+---
+
+## 🎨 Tampilan UI
+
+- Desain modern dengan warna soft: biru tua, abu, putih  
+- Layout **responsif** untuk desktop & mobile  
+- Komponen modular yang **reusable**  
+- Visualisasi data **interaktif**
+
+---
+
+## 🎯 Fitur Utama
+
+- 🔍 Pencarian, filter, dan sorting data
+- 📄 Paginasi untuk data skala besar
+- 📈 Visualisasi data dengan berbagai jenis chart
+
+---
