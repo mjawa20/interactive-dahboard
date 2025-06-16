@@ -1,3 +1,4 @@
+'use client';
 import { useGlobalStore } from "@/store";
 
 export default function SidebarWrapper({ children }: { children: React.ReactNode }) {
