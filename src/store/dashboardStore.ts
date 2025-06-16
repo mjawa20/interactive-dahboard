@@ -11,6 +11,7 @@ interface DashboardState {
   recipesDificultyData: any;
   isLoading: boolean;
   error: string | null;
+  topPostsData: any[];
 
   fetchDashboardData: () => Promise<void>;
   setLoading: (isLoading: boolean) => void;
@@ -27,6 +28,7 @@ export const useDashboardStore = create<DashboardState>((set) => ({
   recipesDificultyData: { labels: [], datasets: [] },
   isLoading: false,
   error: null,
+  topPostsData: [],
 
   setLoading: (isLoading) => set({ isLoading }),
   setError: (error) => set({ error }),
@@ -48,6 +50,7 @@ export const useDashboardStore = create<DashboardState>((set) => ({
         ratingCounts: [0, 0, 0, 0, 0],
         months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
         revenue: [5000, 7000, 8000, 9000, 10000, 11000],
+        topPostsData: [],
       };
 
       dataRecipes.recipes.forEach((item: any) => {
@@ -75,11 +78,14 @@ export const useDashboardStore = create<DashboardState>((set) => ({
         }
       });
 
+      mockData.topPostsData = dataPosts.posts.sort((a: any, b: any) => b.views - a.views).slice(0, 5);
+
       set({
         totalProducts: mockData.totalProducts,
         totalPosts: mockData.totalPosts,
         totalOrders: mockData.totalOrders,
         totalRecipes: mockData.totalRecipes,
+        topPostsData: mockData.topPostsData,
         ratingData: {
           labels: mockData.rating,
           datasets: [{

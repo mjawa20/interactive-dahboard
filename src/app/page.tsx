@@ -9,6 +9,8 @@ import { HeaderPage } from '@/components/molecules/HeaderPage';
 import { useDashboardStore } from '@/store/dashboardStore';
 import { ChartSkeleton } from '@/components/atoms/ChartSkeleton';
 import { Newspaper, Package, ShoppingCart, Utensils } from 'lucide-react';
+import { Table } from '@/components/organisms/Table';
+import { Column } from '@/types/tableTypes';
 
 // Register ChartJS components
 ChartJS.register(
@@ -47,6 +49,12 @@ const lineChartOptions = {
   },
 };
 
+const topPostsColumns: Column<any>[] = [
+  { key: 'title', header: 'Title', className:'truncate' },
+  { key: 'views', header: 'Views' },
+  { key: 'reactions', header: 'Likes', render: (value: any) => value.likes },
+]
+
 export default function Home() {
   const {
     totalProducts,
@@ -58,7 +66,8 @@ export default function Home() {
     isLoading,
     error,
     fetchDashboardData,
-    recipesDificultyData
+    recipesDificultyData,
+    topPostsData
   } = useDashboardStore();
 
   useEffect(() => {
@@ -133,6 +142,15 @@ export default function Home() {
             <ChartSkeleton />
           ) : (
             <Pie className="w-84! h-84!" data={recipesDificultyData} />
+          )}
+        </div>
+
+        <div className="bg-white p-6 rounded-lg shadow flex flex-col items-center max-w-full overflow-auto">
+          <h3 className="text-lg font-medium mb-4">Top 5 of Posts</h3>
+          {isLoading ? (
+            <ChartSkeleton />
+          ) : (
+            <Table data={topPostsData} columns={topPostsColumns} sortBy="" sortOrder="asc" handleSort={() => { }} />
           )}
         </div>
       </div>
