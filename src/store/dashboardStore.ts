@@ -48,8 +48,8 @@ export const useDashboardStore = create<DashboardState>((set) => ({
         dificulty: ['Easy', 'Medium', 'Hard'],
         dificultyData: [0, 0, 0],
         ratingCounts: [0, 0, 0, 0, 0],
-        months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-        revenue: [5000, 7000, 8000, 9000, 10000, 11000],
+        months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        revenue: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         topPostsData: [],
       };
 
@@ -76,6 +76,10 @@ export const useDashboardStore = create<DashboardState>((set) => ({
         } else {
           mockData.ratingCounts[4]++;
         }
+      });
+
+      dataCarts.carts.forEach((item: any, i: number) => {
+        mockData.revenue[i % mockData.months.length] += item.discountedTotal;
       });
 
       mockData.topPostsData = dataPosts.posts.sort((a: any, b: any) => b.views - a.views).slice(0, 5);
