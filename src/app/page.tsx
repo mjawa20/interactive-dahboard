@@ -2,8 +2,8 @@
 'use client';
 
 import { useEffect } from 'react';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement } from 'chart.js';
-import { Bar, Line } from 'react-chartjs-2';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, PointElement, LineElement, ArcElement } from 'chart.js';
+import { Bar, Line, Pie } from 'react-chartjs-2';
 import { SummaryCard } from '@/components/molecules/SummaryCard';
 import { HeaderPage } from '@/components/molecules/HeaderPage';
 import { useDashboardStore } from '@/store/dashboardStore';
@@ -19,7 +19,8 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  ArcElement
 );
 
 // Chart options
@@ -56,7 +57,8 @@ export default function Home() {
     revenueData,
     isLoading,
     error,
-    fetchDashboardData
+    fetchDashboardData,
+    recipesDificultyData
   } = useDashboardStore();
 
   useEffect(() => {
@@ -108,7 +110,7 @@ export default function Home() {
 
       {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white p-6 rounded-lg shadow">
+        <div className="bg-white p-6 rounded-lg shadow text-center flex flex-col items-center">
           <h3 className="text-lg font-medium mb-4">Products by Category</h3>
           {isLoading ? (
             <ChartSkeleton />
@@ -116,12 +118,21 @@ export default function Home() {
             <Bar options={barChartOptions} data={categoryData} />
           )}
         </div>
-        <div className="bg-white p-6 rounded-lg shadow">
+        <div className="bg-white p-6 rounded-lg shadow text-center flex flex-col items-center">
           <h3 className="text-lg font-medium mb-4">Monthly Revenue</h3>
           {isLoading ? (
             <ChartSkeleton />
           ) : (
             <Line options={lineChartOptions} data={revenueData} />
+          )}
+        </div>
+
+        <div className="bg-white p-6 rounded-lg shadow text-center flex flex-col items-center">
+          <h3 className="text-lg font-medium mb-4">Difficulty of Recipes</h3>
+          {isLoading ? (
+            <ChartSkeleton />
+          ) : (
+            <Pie className="w-84! h-84!" data={recipesDificultyData} />
           )}
         </div>
       </div>
