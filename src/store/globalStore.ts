@@ -10,7 +10,9 @@ export type PageItem = {
 interface GlobalStore {
   activePage: PageItem;
   pages: PageItem[];
+  isShowMobileSidebar: boolean;
   setActivePage: (page: PageItem) => void;
+  setIsShowMobileSidebar: (isShowMobileSidebar: boolean) => void;
 }
 export const useGlobalStore = create<GlobalStore>((set, get) => ({
   pages: [
@@ -20,5 +22,7 @@ export const useGlobalStore = create<GlobalStore>((set, get) => ({
     { name: 'Carts', href: '/carts', icon: 'shopping-cart' },
   ],
   activePage: { name: 'Dashboard', href: '/', icon: 'layout-dashboard' },
+  isShowMobileSidebar: false,
   setActivePage: (page: PageItem) => set({ activePage: page }),
+  setIsShowMobileSidebar: (isShowMobileSidebar: boolean) => set({ isShowMobileSidebar }),
 }))

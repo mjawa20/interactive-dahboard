@@ -55,12 +55,13 @@ export function RecipeFilter() {
 
   return (
     <div className="bg-white shadow-sm p-4 rounded">
-      <div className="flex flex-col md:flex-row justify-between items-end md:items-center sm:gap-4 gap-2">
+      <div className="flex flex-wrap justify-end items-end md:items-center sm:gap-4 gap-2">
         <Input
           type="text"
           placeholder="Search recipes..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
+          className='min-w-64'
           leftIcon={<Search className="w-4 h-4 text-gray-400" />}
         />
 
