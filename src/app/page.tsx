@@ -53,7 +53,7 @@ export default function Home() {
     totalPosts,
     totalOrders,
     totalRecipes,
-    categoryData,
+    ratingData,
     revenueData,
     isLoading,
     error,
@@ -111,11 +111,11 @@ export default function Home() {
       {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="bg-white p-6 rounded-lg shadow text-center flex flex-col items-center">
-          <h3 className="text-lg font-medium mb-4">Products by Category</h3>
+          <h3 className="text-lg font-medium mb-4">Products by Rating</h3>
           {isLoading ? (
             <ChartSkeleton />
           ) : (
-            <Bar options={barChartOptions} data={categoryData} />
+            <Bar options={barChartOptions} data={ratingData} />
           )}
         </div>
         <div className="bg-white p-6 rounded-lg shadow text-center flex flex-col items-center">

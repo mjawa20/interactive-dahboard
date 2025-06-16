@@ -6,7 +6,7 @@ interface DashboardState {
   totalPosts: number;
   totalOrders: number;
   totalRecipes: number;
-  categoryData: any;
+  ratingData: any;
   revenueData: any;
   recipesDificultyData: any;
   isLoading: boolean;
@@ -22,7 +22,7 @@ export const useDashboardStore = create<DashboardState>((set) => ({
   totalPosts: 0,
   totalOrders: 0,
   totalRecipes: 0,
-  categoryData: { labels: [], datasets: [] },
+  ratingData: { labels: [], datasets: [] },
   revenueData: { labels: [], datasets: [] },
   recipesDificultyData: { labels: [], datasets: [] },
   isLoading: false,
@@ -42,10 +42,10 @@ export const useDashboardStore = create<DashboardState>((set) => ({
         totalPosts: dataPosts.total,
         totalOrders: dataCarts.total,
         totalRecipes: dataRecipes.total,
-        categories: ['Electronics', 'Clothing', 'Books', 'Home', 'Beauty'],
+        rating: ['1', '2', '3', '4', '5'],
         dificulty: ['Easy', 'Medium', 'Hard'],
         dificultyData: [0, 0, 0],
-        categoryCounts: [320, 280, 150, 420, 80],
+        ratingCounts: [0, 0, 0, 0, 0],
         months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
         revenue: [5000, 7000, 8000, 9000, 10000, 11000],
       };
@@ -60,16 +60,31 @@ export const useDashboardStore = create<DashboardState>((set) => ({
         }
       });
 
+      dataProducts.products.forEach((item: any) => {
+        const rating = Math.round(item.rating);
+        if (rating === 1) {
+          mockData.ratingCounts[0]++;
+        } else if (rating === 2) {
+          mockData.ratingCounts[1]++;
+        } else if (rating === 3) {
+          mockData.ratingCounts[2]++;
+        } else if (rating === 4) {
+          mockData.ratingCounts[3]++;
+        } else {
+          mockData.ratingCounts[4]++;
+        }
+      });
+
       set({
         totalProducts: mockData.totalProducts,
         totalPosts: mockData.totalPosts,
         totalOrders: mockData.totalOrders,
         totalRecipes: mockData.totalRecipes,
-        categoryData: {
-          labels: mockData.categories,
+        ratingData: {
+          labels: mockData.rating,
           datasets: [{
-            label: 'Products by Category',
-            data: mockData.categoryCounts,
+            label: 'Products by Rating',
+            data: mockData.ratingCounts,
             backgroundColor: [
               'rgba(255, 99, 132, 0.6)',
               'rgba(54, 162, 235, 0.6)',
