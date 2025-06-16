@@ -27,7 +27,7 @@ export const useProductStore = create<ProductStore>((set, get) => ({
     get().fetchProducts();
   },
   setSelectedCategory: (category) => {
-    set({ selectedCategory: category, type: 'category', page: 1, search: '' });
+    set({ selectedCategory: category, type: category ? 'category' : 'all', page: 1, search: '' });
     get().fetchProducts();
   },
   setSort: (meta: string) => {

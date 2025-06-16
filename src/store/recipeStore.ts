@@ -92,12 +92,12 @@ export const useRecipeStore = create<RecipeStore>((set, get) => ({
   },
 
   setTag: (selectedTag) => {
-    set({ selectedTag, page: 1, type: 'tag', search: '', mealType: '' });
+    set({ selectedTag, page: 1, type: selectedTag ? 'tag' : 'all', search: '', mealType: '' });
     get().fetchRecipes();
   },
 
   setMealType: (mealType) => {
-    set({ mealType, page: 1, type: 'mealType', search: '', selectedTag: '' });
+    set({ mealType, page: 1, type: mealType ? 'mealType' : 'all', search: '', selectedTag: '' });
     get().fetchRecipes();
   },
 
